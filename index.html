@@ -1,0 +1,40 @@
+</<!DOCTYPE html>
+<html>
+<head>
+	<meta></meta>
+	<script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="./js/codemirror.min.js"></script>
+	<script type="text/javascript" src="./js/mergely.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="./style/codemirror.css" />
+	<link type="text/css" rel="stylesheet" href="./style/mergely.css" />
+	<link type="text/css" rel="stylesheet" href="./style/default.css">
+
+	<title>color merge demo</title>
+
+	<script type="text/javascript">
+
+        $(document).ready(function () {
+			$('#compare').mergely({
+				cmsettings: { readOnly: false },
+				lhs: function(setValue) {
+					setValue('the quick red fox\njumped over the hairy dog');
+				},
+				rhs: function(setValue) {
+					setValue('the quick brown fox\njumped over the lazy dog');
+				}
+			});
+		});
+	</script>
+
+</head>
+<body>
+	set langure: 
+	<input type="text" name="langure" value="">
+	<input type="button" name="render" value="render">
+
+	<div id="mergely-resizer">
+		<div id="compare">
+		</div>
+	</div>
+</body>
+</html>
