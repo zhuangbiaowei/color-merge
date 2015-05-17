@@ -5,10 +5,11 @@
 	<script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="./js/codemirror.min.js"></script>
 	<script type="text/javascript" src="./js/mergely.min.js"></script>
+	<script type="text/javascript" src="./js/highlight.pack.js"></script>
 	<link type="text/css" rel="stylesheet" href="./style/codemirror.css" />
 	<link type="text/css" rel="stylesheet" href="./style/mergely.css" />
 	<link type="text/css" rel="stylesheet" href="./style/default.css">
-
+	
 	<title>color merge demo</title>
 
 	<script type="text/javascript">
@@ -24,13 +25,22 @@
 				}
 			});
 		});
+
+		function render(){
+			var language = $('#language')[0].value;
+			var pre_lines = $(".CodeMirror-code pre");
+			var lhs_text = $('#compare').mergely('get','lhs');
+			var rhs_text = $('#compare').mergely('get','rhs');
+			var render_lhs_text = hljs.highlight(language,lhs_text).value;
+			var render_rhs_text = hljs.highlight(language,rhs_text).value;
+		}
 	</script>
 
 </head>
 <body>
 	set langure: 
-	<input type="text" name="langure" value="">
-	<input type="button" name="render" value="render">
+	<input type="text" name="language" id="language" value="">
+	<input type="button" name="render" value="render" onclick="javascript: render();">
 
 	<div id="mergely-resizer">
 		<div id="compare">
